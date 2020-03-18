@@ -1,0 +1,24 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: inputrc
+  author: DEvil0000
+  description: Ansible role to configure inputrc
+  license: MIT
+  min_ansible_version: 2.8
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - focal
+  galaxy_tags:
+    - system
+    - bash
+    - inputrc
+    - bind
