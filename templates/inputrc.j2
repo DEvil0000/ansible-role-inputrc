@@ -1,0 +1,21 @@
+#
+# {{ ansible_managed }}
+#
+
+{% if include is defined %}
+$include {{ include }}
+{% endif %}
+
+{% for option in options %}
+set {{ option.name }} {{ option.value }}
+{% endfor %}
+
+{% for bind in bindings %}
+{% if bind.condition is defined %}
+$if {{ bind.condition }}
+{% endif %}
+"{{ bind.key }}": {{ bind.function }}
+{% if bind.condition is defined %}
+$endif
+{% endif %}
+{% endfor %}

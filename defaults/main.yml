@@ -1,0 +1,62 @@
+---
+inputrc_write_global_config: true
+inputrc_global_file: /etc/inputrc
+inputrc_file: .inputrc
+inputrc_users:
+  - root
+inputrc_global_options:
+  # Be 8 bit clean.
+  - name: input-meta
+    value: on
+  - name: output-meta
+    value: on
+inputrc_global_bindings:
+  # allow the use of the Home/End keys
+  - key: '\e[1~'
+    function: beginning-of-line
+    condition: mode=emacs
+  - key: '\e[4~'
+    function: end-of-line
+    condition: mode=emacs
+  # allow the use of the Delete/Insert keys
+  - key: '\e[3~'
+    function: delete-char
+    condition: mode=emacs
+  - key: '\e[2~'
+    function: quoted-insert
+    condition: mode=emacs
+  # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+  - key: '\e[1;5C'
+    function: forward-word
+    condition: mode=emacs
+  - key: '\e[1;5D'
+    function: backward-word
+    condition: mode=emacs
+  - key: '\e[5C'
+    function: forward-word
+    condition: mode=emacs
+  - key: '\e[5D'
+    function: backward-word
+    condition: mode=emacs
+  - key: '\e\e[C'
+    function: forward-word
+    condition: mode=emacs
+  - key: '\e\e[D'
+    function: backward-word
+    condition: mode=emacs
+  # term rxvt things
+  - key: '\e[7~'
+    function: beginning-of-line
+    condition: term=rxvt
+  - key: '\e[8~'
+    function: end-of-line
+    condition: term=rxvt
+  - key: '\eOc'
+    function: forward-word
+    condition: term=rxvt
+  - key: '\eOd'
+    function: backward-word
+    condition: term=rxvt
+inputrc_options: []
+inputrc_bindings: []
+inputrc_include: "{{ inputrc_global_file }}"
