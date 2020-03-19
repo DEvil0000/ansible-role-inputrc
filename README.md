@@ -18,7 +18,7 @@ them are as follows:
 | `inputrc_global_bindings` | No | `[...]` | The global inputrc bindings are defined here. |
 | `inputrc_options` | No | `[]` | The users inputrc options are defined here. |
 | `inputrc_bindings` | No | `[]` | The users inputrc bindings are defined here. |
-| `inputrc_include` | No | `{{ inputrc_global_file }}` | The users inputrc will include this file. |
+| `inputrc_include` | No | `{{inputrc_global_file}}` | The users inputrc will include this file. |
 
 The defaults for `inputrc_global_options` are as follows:
 
@@ -84,6 +84,7 @@ inputrc_global_bindings:
     condition: term=rxvt
 ```
 Note: Those are the debian-family defaults.
+
 Note: It is important not using the magic quotes for the key value.
 
 ## Examples
