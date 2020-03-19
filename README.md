@@ -84,6 +84,7 @@ inputrc_global_bindings:
     condition: term=rxvt
 ```
 Note: Those are the debian-family defaults.
+Note: It is important not using the magic quotes for the key value.
 
 ## Examples
 
