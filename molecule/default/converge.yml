@@ -1,0 +1,21 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "inputrc with defaults"
+      include_role:
+        name: "inputrc"
+    - name: "inputrc for user johnd"
+      include_role:
+        name: "inputrc"
+      vars:
+        inputrc_users:
+        - johnd
+        inputrc_options:
+          - name: bell-style
+            value: none
+        inputrc_bindings:
+          - key: '\e[A'
+            function: history-search-backward
+          - key: '\e[B'
+            function: history-search-forward

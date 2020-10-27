@@ -1,0 +1,30 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+    - name: check global config file exists (stat)
+      stat:
+        path: "{{ inputrc_global_file }}"
+      register: stat_result
+    - name: check global config file exists (assert)
+      assert:
+        that: stat_result.stat.exists
+    - name: check root config file exists (stat)
+      stat:
+        path: "/root/{{ inputrc_file }}"
+      register: stat_result
+    - name: check root config file exists (assert)
+      assert:
+        that: stat_result.stat.exists
+    - name: check johnd config file exists (stat)
+      stat:
+        path: "/home/johnd/{{ inputrc_file }}"
+      register: stat_result
+    - name: check johnd config file exists (assert)
+      assert:
+        that: stat_result.stat.exists
+  vars:
+    inputrc_global_file: /etc/inputrc
+    inputrc_file: .inputrc
