@@ -1,44 +1,7 @@
 ---
-- name: Write global inputrc
-  become: yes
-  template:
-    src: inputrc.j2
-    dest: "{{ inputrc_global_file }}"
-    owner: root
-    group: root
-    mode: '0644'
-    backup: yes
-  when: inputrc_write_global_config
-  vars:
-    options: "{{ inputrc_global_options }}"
-    bindings: "{{ inputrc_global_bindings }}"
+- name: global inputrc
+  import_tasks: global.yml
 
-- name: Write roots inputrc
-  become: yes
-  template:
-    src: inputrc.j2
-    dest: "/root/{{ inputrc_file }}"
-    owner: root
-    group: root
-    mode: '0644'
-    backup: yes
-  when: "'root' in inputrc_users"
-  vars:
-    options: "{{ inputrc_options }}"
-    bindings: "{{ inputrc_bindings }}"
-
-- name: Write users inputrc
-  become: yes
-  template:
-    src: inputrc.j2
-    dest: "/home/{{ item }}/{{ inputrc_file }}"
-    owner: "{{ item }}"
-    group: "{{ item }}"
-    mode: '0644'
-    backup: yes
+- name: users inputrc
+  include_tasks: user.yml
   with_items: "{{ inputrc_users }}"
-  when: item != 'root'
-  vars:
-    options: "{{ inputrc_options }}"
-    bindings: "{{ inputrc_bindings }}"
-    include: "{{ inputrc_include }}"
