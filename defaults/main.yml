@@ -5,9 +5,15 @@ inputrc_file: .inputrc
 inputrc_users:
   - root
 inputrc_global_options:
-  # Be 8 bit clean.
+  # Enable 8bit input
+  - name: meta-flag
+    value: on
   - name: input-meta
     value: on
+  # Turns off 8th bit stripping
+  - name: convert-meta
+    value: off
+  # Keep the 8th bit for display
   - name: output-meta
     value: on
 inputrc_global_bindings:
@@ -16,6 +22,20 @@ inputrc_global_bindings:
     function: beginning-of-line
     condition: mode=emacs
   - key: '\e[4~'
+    function: end-of-line
+    condition: mode=emacs
+  # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+  - key: '\eOH'
+    function: beginning-of-line
+    condition: mode=emacs
+  - key: '\eOF'
+    function: end-of-line
+    condition: mode=emacs
+  # for freebsd console
+  - key: '\e[H'
+    function: beginning-of-line
+    condition: mode=emacs
+  - key: '\e[F'
     function: end-of-line
     condition: mode=emacs
   # allow the use of the Delete/Insert keys

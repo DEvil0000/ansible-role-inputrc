@@ -24,9 +24,15 @@ The defaults for `inputrc_global_options` are as follows:
 
 ```yaml
 inputrc_global_options:
-  # Be 8 bit clean.
+  # Enable 8bit input
+  - name: meta-flag
+    value: on
   - name: input-meta
     value: on
+  # Turns off 8th bit stripping
+  - name: convert-meta
+    value: off
+  # Keep the 8th bit for display
   - name: output-meta
     value: on
 ```
@@ -49,6 +55,20 @@ inputrc_global_bindings:
     condition: mode=emacs
   - key: '\e[2~'
     function: quoted-insert
+    condition: mode=emacs
+  # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+  - key: '\eOH'
+    function: beginning-of-line
+    condition: mode=emacs
+  - key: '\eOF'
+    function: end-of-line
+    condition: mode=emacs
+  # for freebsd console
+  - key: '\e[H'
+    function: beginning-of-line
+    condition: mode=emacs
+  - key: '\e[F'
+    function: end-of-line
     condition: mode=emacs
   # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
   - key: '\e[1;5C'
@@ -104,9 +124,14 @@ Note: It is important not using the magic quotes for the key value.
       - root
       - someone
     inputrc_options:
+      # silence terminal on tab completeion fail - no bell or visuals
       - name: bell-style
         value: none
+      # bash readline will append / on symlink completion if it is a directory
+      - name: mark-symlinked-directories
+        value: on
     inputrc_bindings:
+      # arrow key up/down will do a history search
       - key: '\e[A'
         function: history-search-backward
       - key: '\e[B'
