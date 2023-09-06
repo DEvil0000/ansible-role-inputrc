@@ -7,15 +7,15 @@ inputrc_users:
 inputrc_global_options:
   # Enable 8bit input
   - name: meta-flag
-    value: on
+    value: "on"
   - name: input-meta
-    value: on
+    value: "on"
   # Turns off 8th bit stripping
   - name: convert-meta
-    value: off
+    value: "off"
   # Keep the 8th bit for display
   - name: output-meta
-    value: on
+    value: "on"
 inputrc_global_bindings:
   # allow the use of the Home/End keys
   - key: '\e[1~'

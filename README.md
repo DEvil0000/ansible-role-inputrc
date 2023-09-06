@@ -26,15 +26,15 @@ The defaults for `inputrc_global_options` are as follows:
 inputrc_global_options:
   # Enable 8bit input
   - name: meta-flag
-    value: on
+    value: "on"
   - name: input-meta
-    value: on
+    value: "on"
   # Turns off 8th bit stripping
   - name: convert-meta
-    value: off
+    value: "off"
   # Keep the 8th bit for display
   - name: output-meta
-    value: on
+    value: "on"
 ```
 Note: Those are the debian-family defaults.
 
@@ -129,7 +129,7 @@ Note: It is important not using the magic quotes for the key value.
         value: none
       # bash readline will append / on symlink completion if it is a directory
       - name: mark-symlinked-directories
-        value: on
+        value: "on"
     inputrc_bindings:
       # arrow key up/down will do a history search
       - key: '\e[A'

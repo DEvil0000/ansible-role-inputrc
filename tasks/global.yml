@@ -1,13 +1,13 @@
 ---
 - name: Write global inputrc
-  become: yes
+  become: true
   template:
     src: inputrc.j2
     dest: "{{ inputrc_global_file }}"
     owner: root
     group: root
     mode: '0644'
-    backup: yes
+    backup: true
   when: inputrc_write_global_config
   vars:
     options: "{{ inputrc_global_options }}"

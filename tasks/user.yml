@@ -1,9 +1,9 @@
 ---
 - name: Get users home
-  become: yes
+  become: true
   command: echo ~{{ item }}
   register: user_home_result
-  check_mode: no
+  check_mode: false
   changed_when: false
 
 - name: Set users home
@@ -11,20 +11,20 @@
     user_home: "{{ user_home_result.stdout }}"
 
 - name: Check if users home exists
-  become: yes
+  become: true
   stat:
     path: "{{ user_home }}"
   register: file_details
 
 - name: Write inputrc for user {{ item }}
-  become: yes
+  become: true
   template:
     src: inputrc.j2
     dest: "{{ user_home }}/{{ inputrc_file }}"
     owner: "{{ item }}"
     group: "{{ item }}"
     mode: '0644'
-    backup: yes
+    backup: true
   when: file_details.stat.exists
   vars:
     options: "{{ inputrc_options }}"
