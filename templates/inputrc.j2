@@ -7,10 +7,10 @@ $include {{ include }}
 {% endif %}
 
 {% for option in options %}
-{%- if option.value is boolean -%}
-set {{ option.name }} {{ option.value | bool | ternary('on', 'off') }}
-{%- else -%}
+{%- if option.value is string -%}
 set {{ option.name }} {{ option.value }}
+{%- else -%}
+set {{ option.name }} {{ option.value | bool | ternary('on', 'off') }}
 {%- endif -%}
 {% endfor %}
 
