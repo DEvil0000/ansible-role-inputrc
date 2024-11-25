@@ -7,11 +7,11 @@ $include {{ include }}
 {% endif %}
 
 {% for option in options %}
-{%- if option.value is string -%}
+{% if option.value is string %}
 set {{ option.name }} {{ option.value }}
-{%- else -%}
+{% else %}
 set {{ option.name }} {{ option.value | bool | ternary('on', 'off') }}
-{%- endif -%}
+{% endif %}
 {% endfor %}
 
 {% for bind in bindings %}
